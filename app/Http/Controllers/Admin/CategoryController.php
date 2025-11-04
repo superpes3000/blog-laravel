@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Category\StoreRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        dd("index");
+        return view("admin.category.index");
     }
 
     /**
@@ -21,15 +22,16 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        dd("show form creating");
+        return view("admin.category.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        dd("new item");
+        $data = $request->validated();
+        dd($data);
     }
 
     /**

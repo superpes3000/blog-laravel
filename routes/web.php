@@ -10,9 +10,16 @@ Route::get('/', MainController::class);
 
 Route::prefix('admin')->group(function() {
 
-    Route::get('/', [AdminController::class, '__invoke']);
+    Route::get('/', [AdminController::class, '__invoke'])->name("admin.home");
+    Route::resource('category', CategoryController::class)->names("admin.category");
 
-    Route::resource('categories', CategoryController::class);
+    //Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+    //Route::get('/category')
+    //Route::prefix('category')->group(function() {
+    //    Route::get('/create', [CategoryController::class, 'create'])->name("admin.category.create");
+    //});
+    //Route::post('category/store', [CategoryController::class, 'store'])->name('admin.category.store');
+    //Route::post('/category/store', [CategoryController::class, 'store'])->name('admin.category.store');
     ;
 
 });
