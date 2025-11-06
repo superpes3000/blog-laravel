@@ -3,21 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Category\StoreRequest;
-use App\Http\Requests\Admin\Category\UpdateRequest;
+use App\Http\Requests\Admin\Tag\StoreRequest;
+use App\Http\Requests\Admin\Tag\UpdateRequest;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories = Category::all();
+        $tags = Tag::all();
 
-        return view("admin.category.index", compact("categories"));
+        return view("admin.tag.index", compact("tags"));
     }
 
     /**
@@ -25,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view("admin.category.create");
+        return view("admin.tag.create");
     }
 
     /**
@@ -35,19 +36,19 @@ class CategoryController extends Controller
     {
         $data = $request->validated();
 
-        Category::firstOrCreate(['title' => $data['title']],
+        Tag::firstOrCreate(['title' => $data['title']],
         ['title' => $data['title']]);
 
-        return redirect()->route("admin.category.index");
+        return redirect()->route("admin.tag.index");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show(string $id)
     {
-        $category = Category::find($id);
-        return view('admin.category.show', compact("category"));
+        $tag = Tag::find((int)$id);
+        return view('admin.tag.show', compact("tag"));
     }
 
     /**
@@ -55,9 +56,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $category = Category::find($id);
+        $tag = Tag::find($id);
 
-        return view("admin.category.edit", compact("category"));
+        return view("admin.tag.edit", compact("tag"));
     }
 
     /**
@@ -65,11 +66,11 @@ class CategoryController extends Controller
      */
     public function update(UpdateRequest $request, int $id)
     {
-        $data = Category::find($id);
+        $data = Tag::find($id);
         if(isset($data)){
             $data->update($request->validated());
         }
-        return redirect()->route("admin.category.index");
+        return redirect()->route("admin.tag.index");
     }
 
     /**
@@ -77,7 +78,7 @@ class CategoryController extends Controller
      */
     public function destroy(int $id)
     {
-        Category::destroy((int)$id);
-        return redirect()->route("admin.category.index");
+        Tag::destroy((int)$id);
+        return redirect()->route("admin.tag.index");
     }
 }

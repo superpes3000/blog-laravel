@@ -11,7 +11,7 @@
 
 
             <div class="col-6 mt-4">
-                <a class="btn btn-primary" href="{{route('admin.category.create')}}">Добавить категорию</a>
+                <a class="btn btn-primary" href="{{route('admin.tag.create')}}">Добавить пост</a>
 
             <div class="card mt-4">
                 <div class="card-header">
@@ -40,19 +40,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($categories as $category)
+                        @foreach($tags as $tag)
                             <tr>
-                                <td>{{$category->id}}</td>
-                                <td>{{$category->title}}</td>
+                                <td>{{$tag->id}}</td>
+                                <td>{{$tag->title}}</td>
                                 <td>
-                                    <a href="{{ route('admin.category.show', $category->id) }}"><i class="far fa-eye"></i></a>
+                                    <a href="{{ route('admin.tag.show', $tag->id) }}"><i class="far fa-eye"></i></a>
                                 </td>
 
                                 <td>
-                                    <a href="{{ route('admin.category.edit', $category->id) }}"><i class="text-success fas fa-pencil-alt"></i></a>
+                                    <a href="{{ route('admin.tag.edit', $tag->id) }}"><i class="text-success fas fa-pencil-alt"></i></a>
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST">
+                                    <form action="{{ route('admin.tag.destroy', $tag->id) }}" method="POST">
                                         @csrf
                                         @method("DELETE")
                                         <button type="submit" class="border-0 bg-transparent">

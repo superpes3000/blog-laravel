@@ -127,6 +127,24 @@
                             </p>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('admin.tag.index')}}" class="nav-link">
+                            <i class="nav-icon far fa-image"></i>
+                            <p>
+                                Теги
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.post.index')}}" class="nav-link">
+                            <i class="nav-icon far fa-image"></i>
+                            <p>
+                                Посты
+                            </p>
+                        </a>
+                    </li>
+
                 </ul>
             </nav>
 
@@ -168,5 +186,25 @@
 <script src="{{asset("dist/js/adminlte.js")}}"></script>
 <script src="{{asset("dist/js/demo.js")}}"></script>
 <script src="{{asset("dist/js/pages/dashboard.js")}}"></script>
+<script src="{{asset("plugins/bs-custom-file-input/bs-custom-file-input.min.js")}}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#summernote').summernote({
+            toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]}
+        );
+    });
+</script>
+<script>
+    $(function () {
+        bsCustomFileInput.init();
+    });
+</script>
 </body>
 </html>
